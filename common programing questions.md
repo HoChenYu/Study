@@ -41,17 +41,12 @@ int strlen(const char *str)
 ````
 ### strcmp
 ````C
-int strcmp(const char *s1, const char *s2)
-{
-    char *ptr = s1 + strlen(s1);
- 
-    while (*s2 != '\0') {
-        *ptr++ = *s2++;
+int strcmp(const char *a, const char *b) {
+    while (*a && (*a == *b)) {
+        a++;
+        b++;
     }
-
-    *ptr = '\0';
-
-    return s1;
+    return *a - *b;
 }
 ````
 ### binary search
