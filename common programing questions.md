@@ -74,3 +74,22 @@ void binary_search(int *arr, int len, int target)
     printf("Not found\n");
 }
 ````
+# Remove Duplicates from Sorted List(Leetcode83)
+````C
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode *current=head;
+        ListNode *pre=NULL;
+        while(current!=NULL && current->next!=NULL){
+            if(current->val==current->next->val){
+                current->next=current->next->next;
+            }
+            else{
+                current=current->next;
+            }
+        }
+        return head;
+    }
+};
+````
