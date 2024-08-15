@@ -1,4 +1,5 @@
-# strcpy
+# strcpy, srtcat, strlen, strcmp
+### strcpy
 ````c
 void strcpy(char *dest, const char *src)
 {
@@ -10,7 +11,7 @@ void strcpy(char *dest, const char *src)
         src++;
     }
 ````
-# strcat
+### strcat
 ````C
 void strcat(char *dest, const char *src)
 {
@@ -28,7 +29,7 @@ void strcat(char *dest, const char *src)
     }
 }
 ````
-# strlen
+### strlen
 ````C
 int strlen(const char *str)
 {
@@ -38,7 +39,7 @@ int strlen(const char *str)
     return len;
 }
 ````
-# strcmp
+### strcmp
 ````C
 int strcmp(const char *s1, const char *s2)
 {
@@ -53,7 +54,7 @@ int strcmp(const char *s1, const char *s2)
     return s1;
 }
 ````
-# binary search
+### binary search
 ````c
 void binary_search(int *arr, int len, int target)
 {
@@ -74,7 +75,8 @@ void binary_search(int *arr, int len, int target)
     printf("Not found\n");
 }
 ````
-# Linked List Cycle(Leetcode141)
+# Linked list
+### Linked List Cycle(Leetcode141)
 ````C
 class Solution {
 public:
@@ -95,7 +97,7 @@ public:
     }
 };
 ````
-# Remove Duplicates from Sorted List(Leetcode83)
+### Remove Duplicates from Sorted List(Leetcode83)
 ````C
 class Solution {
 public:
@@ -114,7 +116,7 @@ public:
     }
 };
 ````
-# Reverse Linked List(Leetcode206)
+### Reverse Linked List(Leetcode206)
 ````C
 class Solution {
 public:
@@ -132,7 +134,7 @@ public:
     }
 };
 ````
-# Merge Two Sorted Lists(Leetcode21)
+### Merge Two Sorted Lists(Leetcode21)
 ````C
 class Solution {
 public:
@@ -161,3 +163,4 @@ public:
     }
 };
 ````
+# Linked list imeplment queue
