@@ -76,6 +76,21 @@ void binary_search(int *arr, int len, int target)
 }
 ````
 # Linked list
+### Middle of the Linked List(Leetcode876)
+````C
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode *slow=head;
+        ListNode *fast=head;
+        while(fast!=nullptr && fast->next!=nullptr){
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow;
+    }
+};
+````
 ### Linked List Cycle(Leetcode141)
 ````C
 class Solution {
