@@ -74,6 +74,27 @@ void binary_search(int *arr, int len, int target)
     printf("Not found\n");
 }
 ````
+# Linked List Cycle(Leetcode141)
+````C
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL){
+            return false;
+        }
+        ListNode *slow=head;
+        ListNode *fast=head;
+        while(fast->next!=NULL &&fast->next->next!=NULL){
+            fast=fast->next->next;
+            slow=slow->next;
+            if(fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+````
 # Remove Duplicates from Sorted List(Leetcode83)
 ````C
 class Solution {
