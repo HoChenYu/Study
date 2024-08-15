@@ -93,7 +93,25 @@ public:
     }
 };
 ````
-# Merge Two Sorted Lists
+# Reverse Linked List(Leetcode206)
+````C
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *current=head;
+        ListNode *prev=NULL;
+        ListNode *next=NULL;
+        while(current!=nullptr){
+            next=current->next;
+            current->next=prev;
+            prev=current;
+            current=next;
+        }
+        return prev;
+    }
+};
+````
+# Merge Two Sorted Lists(Leetcode21)
 ````C
 class Solution {
 public:
