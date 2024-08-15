@@ -163,4 +163,4 @@ public:
     }
 };
 ````
-# Linked list imeplment queue
+# Linked list implement queue
