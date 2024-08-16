@@ -174,6 +174,103 @@ public:
 };
 ````
 # Linked list implement queue
+````C
+struct linked_list {
+    linked_list *next;
+    uint8_t data;
+};
+
+struct Queue {
+    linked_list *head;
+    linked_list *tail;
+    int size; // 來跟蹤隊列的大小
+};
+void initQueue(struct Queue *q) {
+    q->head = NULL;
+    q->tail = NULL;
+    q->size = 0;
+}
+void push(Queue *q, uint8_t data) {
+    linked_list *new_node = (linked_list *)malloc(sizeof(linked_list));
+    if (new_node == NULL) {
+        perror("Failed to allocate memory");
+        return;
+    }
+    new_node->data = data;
+    new_node->next = NULL;
+    
+    if (q->tail != NULL) {
+        q->tail->next = new_node;
+    }
+    q->tail = new_node;
+    
+    if (q->head == NULL) {
+        q->head = new_node;
+    }
+    
+    q->size++;
+}
+void pop(struct Queue *q) {
+    if (q->head == NULL) {
+        printf("Queue is empty\n");
+        return;
+    }
+
+    struct linked_list *temp = q->head;
+    q->head = q->head->next;
+    
+    if (q->head == NULL) {
+        q->tail = NULL;
+    }
+    
+    free(temp);
+    q->size--;
+}
+uint8_t getFront(struct Queue *q) {
+    if (q->head == NULL) {
+        printf("Queue is empty\n");
+        return 0; // 或者返回一個錯誤值
+    }
+    return q->head->data;
+}
+uint8_t getRear(struct Queue *q) {
+    if (q->tail == NULL){
+        printf("Queue is empty\n");
+        return 0; // 或者返回一個錯誤值
+    }
+    return q->tail->data;
+}
+bool isEmpty(struct Queue *q) {
+    return q->head == NULL;
+}
+size_t getSize(struct Queue *q) {
+    return q->size;
+}
+int main() {
+    struct Queue q;
+    initQueue(&q);
+
+    push(&q, 10);
+    push(&q, 20);
+    push(&q, 30);
+
+    printf("Front: %u\n", getFront(&q)); // 應該輸出 10
+    printf("Rear: %u\n", getRear(&q));   // 應該輸出 30
+    printf("Size: %zu\n", getSize(&q));  // 應該輸出 3
+
+    pop(&q);
+    printf("Front after pop: %u\n", getFront(&q)); // 應該輸出 20
+    printf("Size after pop: %zu\n", getSize(&q));  // 應該輸出 2
+
+    // 釋放剩餘的內存
+    while (!isEmpty(&q)) {
+        pop(&q);
+    }
+
+    return 0;
+}
+
+````
 # Linked list sorting
 ### quick sort
 ````C
