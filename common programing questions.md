@@ -177,6 +177,11 @@ public:
 # Linked list sorting
 ### quick sort
 ````C
+//from:https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
+struct Node { 
+    int data; 
+    struct Node* next; 
+}; 
 struct Node* partition(struct Node* first, struct Node* last) 
 { 
     // Get first node of given linked list 
