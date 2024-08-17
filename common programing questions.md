@@ -173,6 +173,32 @@ public:
     }
 };
 ````
+# Linked list opertaion
+````C
+void insert_node(Node **start, int insert_after_value, int value)
+{
+	Node *current = *start; 
+	
+	while(current != NULL) {
+		if(insert_after_value == current->data) {
+			Node *new_node = (Node*)malloc(sizeof(Node));	
+			new_node->data = value;
+			new_node->next = NULL;
+			if(current->next == NULL) {
+				current->next = new_node;
+				break;
+			}
+			else {
+				new_node->next = current->next;
+				current->next = new_node;
+				break;
+			}
+		}
+		current = current->next;
+	}
+}
+
+````
 # Linked list implement queue
 ````C
 struct linked_list {
