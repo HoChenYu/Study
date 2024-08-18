@@ -301,56 +301,54 @@ int main() {
 ### quick sort
 ````C
 //from:https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
-struct Node { 
+typedef struct Node { 
     int data; 
     struct Node* next; 
-}; 
-struct Node* partition(struct Node* first, struct Node* last) 
+} Node;
+
+Node* partition(struct Node* left, struct Node* right) 
 { 
-    // Get first node of given linked list 
-    struct Node* pivot = first; 
-    struct Node* front = first; 
-    int temp = 0; 
-    while (front != NULL && front != last) { 
-        if (front->data < last->data) { 
-            pivot = first; 
+    struct Node* pivot = right; // 基準點為最後一個節點
+    struct Node* current = left; // 當前節點指標
+    struct Node* partitionNode = left; // 分區節點指標
+    int temp; 
+
+    while (current != right) { 
+        if (current->data < pivot->data) { 
+            // 交換 partitionNode 和 current 的數據
+            temp = partitionNode->data; 
+            partitionNode->data = current->data; 
+            current->data = temp; 
   
-            // Swapping  node values 
-            temp = first->data; 
-            first->data = front->data; 
-            front->data = temp; 
-  
-            // Visiting the next node 
-            first = first->next; 
+            // 移動 partitionNode 到下一個節點
+            partitionNode = partitionNode->next; 
         } 
   
-        // Visiting the next node 
-        front = front->next; 
+        // 移動 current 到下一個節點
+        current = current->next; 
     } 
   
-    // Change last node value to current node 
-    temp = first->data; 
-    first->data = last->data; 
-    last->data = temp; 
-    return pivot; 
-} 
-  
-// Performing quick sort in  the given linked list 
-void quick_sort(struct Node* first, struct Node* last) 
-{ 
-    if (first == last) { 
-        return; 
-    } 
-    struct Node* pivot = partition(first, last); 
-  
-    if (pivot != NULL && pivot->next != NULL) { 
-        quick_sort(pivot->next, last); 
-    } 
-  
-    if (pivot != NULL && first != pivot) { 
-        quick_sort(first, pivot); 
-    } 
-} 
+    // 將基準點數據交換到 partitionNode 的位置
+    temp = partitionNode->data; 
+    partitionNode->data = pivot->data; 
+    pivot->data = temp; 
+
+    return partitionNode; // 返回新的基準點位置
+}
+
+void quicksort(Node *left, Node *right) {
+    if (left == right) {
+        return; // 使用 return 而不是 break
+    }
+    Node *pos = partition(left, right);
+    if (pos != NULL && pos->next != NULL) {
+        quicksort(pos->next, right);
+    }
+    if (pos != NULL && left != pos) {
+        quicksort(left, pos);
+    }
+}
+
 ````
 # shuffle the array
 ````C
