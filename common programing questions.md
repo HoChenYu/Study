@@ -352,4 +352,23 @@ void quick_sort(struct Node* first, struct Node* last)
     } 
 } 
 ````
+# shuffle the array
+````C
+    #include<stdio.h>
+    #include<stdlib.h>
+    #include<time.h>
 
+    void shuffle(int *array, size_t n){
+        //亂數前置
+        srand(time(NULL));
+        if (n > 1){
+            size_t i;
+            for (int i = n-1; i >= 0; i--){
+                size_t j = rand() % (i+1);
+                int t = array[j];
+                array[j] = array[i];
+                array[i] = t;
+            }
+        }
+    }
+````
