@@ -1,3 +1,81 @@
+# quick sort
+````c
+#include <iostream>
+using namespace std;
+void swap(int *, int *);
+int partition(int *, int, int);
+void quicksort(int *, int, int);
+void printarray(int *,int);
+int main(){
+	int data[]={22,11,88,66,55,77,33,44,2,7,4,13,5};
+	int arraysize=sizeof(data)/sizeof(data[0]);
+	cout<<"first";
+	printarray(data,arraysize);
+	cout<<endl;
+	quicksort(data,0,arraysize-1);
+	cout<<"fineshed";
+	printarray(data,arraysize);
+	cout<<endl;
+	return 0;
+}
+void printarray(int *a,int arraysize){
+	for(int i=0;i<arraysize;i++){
+		cout<<a[i];
+	}
+}
+int partition(int *a, int left, int right) {
+    int i = left, j = right;
+    int pivot = a[left];
+
+    while (i < j) {
+        while (i < right && a[i] <= pivot) {
+            i++;
+        }
+        while (j > left && a[j] > pivot) {
+            j--;
+        }
+        if (i < j) {
+            swap(&a[i], &a[j]);
+        }
+    }
+    swap(&a[left], &a[j]);
+    return j;
+}
+void quicksort(int *a,int left,int right){
+	if(left<right){
+		int partition_pos;
+		partition_pos=partition(a,left,right);
+		quicksort(a,left,partition_pos-1);
+		quicksort(a,partition_pos+1,right);
+	}
+}
+void swap(int *a, int *b){
+	int tmp=*a;
+	*a=*b;
+	*b=tmp;
+}
+````
+# binary search
+````c
+void binary_search(int *arr, int len, int target)
+{
+    int right = len - 1, left = 0, mid = 0;
+    
+    while (right >= left) {
+        mid = (right + left) / 2;
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else if (arr[mid] > target) {
+            right = mid - 1;
+        } else if (arr[mid] == target) {
+            printf("Found it\n");
+            return;
+        }
+    }
+    
+    printf("Not found\n");
+}
+````
 # strcpy, srtcat, strlen, strcmp
 ### strcpy
 ````c
