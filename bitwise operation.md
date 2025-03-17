@@ -25,3 +25,20 @@ int findMSBvalue(int a) {
 }
 ````
 會將最高位元(MSB)右邊的bit都變成1，所以之後再加上1造成進位後右移1個bit
+
+### Use int b replace int a in postition pos
+```C
+int bitwise(int a, int b, int pos) {
+    // 清除 a 中 pos 位置的位
+    int mask = ~(1 << pos);
+    a &= mask;  // 清除 a 的 pos 位置的位
+
+    // 提取 b 中 pos 位置的位
+    int bitB = (b >> pos) & 1;
+
+    // 将 b 中的位放置到 a 的 pos 位置
+    a |= (bitB << pos);
+
+    return a;
+}
+````
